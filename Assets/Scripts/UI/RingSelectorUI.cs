@@ -88,6 +88,12 @@ namespace Dennis.UI
         {
             _leftButton.onClick.AddListener(OnTurnLeftClick);
             _rightButton.onClick.AddListener(OnTurnRightClick);
+
+            if (_ringElementList.Count <= 1)
+            {
+                _leftButton.interactable = false;
+                _rightButton.interactable = false;
+            }
         }
 
         private void UpdateRingElementPosition()
@@ -177,11 +183,15 @@ namespace Dennis.UI
 
         private void OnTurnRightClick()
         {
+            if (_ringElementList.Count <= 1) return;
+
             RotateRing(Direction.Right);
         }
 
         private void OnTurnLeftClick()
         {
+            if (_ringElementList.Count <= 1) return;
+
             RotateRing(Direction.Left);
         }
 
